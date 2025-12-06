@@ -206,26 +206,33 @@
 
     /* мемы по краям */
 
+        /* мемы по краям — теперь крупные */
+
     .meme {
       position: absolute;
-      width: 90px;
-      max-width: 30vw;
-      filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
+      width: 210px;        /* было ~90px → стали крупнее */
+      max-width: 45vw;
+      filter: drop-shadow(0 0 12px rgba(0,0,0,0.9));
       pointer-events: none;
       z-index: 1;
     }
 
-    .m1 { top: -30px; left: -30px; transform: rotate(-10deg); }
-    .m2 { top: -40px; right: -25px; transform: rotate(8deg); }
-    .m3 { bottom: -35px; left: -10px; transform: rotate(5deg); }
-    .m4 { bottom: -40px; right: -20px; transform: rotate(-7deg); }
+    /* верхняя кромка: слева, центр, справа */
+    .m1 { top: -130px; left: -60px; transform: rotate(-8deg); }
+    .m2 { top: -140px; left: 30%; transform: rotate(4deg); }
+    .m3 { top: -130px; right: -60px; transform: rotate(9deg); }
 
-    .m5 { top: 40%; left: -45px; transform: rotate(-4deg); }
-    .m6 { top: 48%; right: -45px; transform: rotate(6deg); }
+    /* середина по бокам */
+    .m4 { top: 22%; left: -160px; transform: rotate(-5deg); }
+    .m5 { top: 30%; right: -160px; transform: rotate(6deg); }
 
-    .m7 { top: -25px; left: 35%; transform: rotate(3deg); }
-    .m8 { bottom: -25px; left: 30%; transform: rotate(-5deg); }
-    .m9 { bottom: -20px; right: 32%; transform: rotate(4deg); }
+    /* боковушки ближе к низу */
+    .m6 { bottom: 26%; left: -165px; transform: rotate(3deg); }
+    .m7 { bottom: 22%; right: -165px; transform: rotate(-6deg); }
+
+    /* нижняя кромка: слева и справа */
+    .m8 { bottom: -140px; left: -40px; transform: rotate(-4deg); }
+    .m9 { bottom: -140px; right: -40px; transform: rotate(5deg); }
 
     @media (max-width: 540px) {
       .frame {
@@ -236,9 +243,10 @@
         align-items: flex-start;
       }
       .meme {
-        width: 70px;
+        width: 120px;      /* на мобилке уменьшаем, чтобы всё влезло */
       }
     }
+
   </style>
 </head>
 <body>
