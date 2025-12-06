@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Кринж-поздравление</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #0f0f1a;
+      --accent: #ff5bbd;
+      --accent2: #57e3ff;
+      --text: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #2b2b3f 0, #090910 55%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .frame {
+      position: relative;
+      max-width: 720px;
+      width: 100%;
+      border-radius: 24px;
+      padding: 32px 24px 28px;
+      background: rgba(9, 9, 16, 0.95);
+      box-shadow:
+        0 0 40px rgba(0, 0, 0, 0.8),
+        0 0 60px rgba(255, 91, 189, 0.25),
+        0 0 60px rgba(87, 227, 255, 0.25);
+      overflow: hidden;
+    }
+
+    /* Неоновые “трубки” по краям */
+    .frame::before,
+    .frame::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        conic-gradient(from 120deg,
+          rgba(255, 91, 189, 0.0),
+          rgba(255, 91, 189, 0.7),
+          rgba(87, 227, 255, 0.7),
+          rgba(255, 255, 255, 0.0));
+      opacity: 0.18;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+    .frame::after {
+      filter: blur(18px);
+      opacity: 0.35;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      margin-bottom: 10px;
+    }
+
+    .tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 8px rgba(255, 91, 189, 0.8);
+    }
+
+    h1 {
+      font-size: clamp(26px, 5vw, 32px);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #b0b0cc;
+      margin-bottom: 22px;
+    }
+
+    .card {
+      border-radius: 20px;
+      padding: 18px 16px;
+      margin-bottom: 18px;
+      background: radial-gradient(circle at top left,
+                rgba(255, 91, 189, 0.16),
+                rgba(15, 15, 26, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "🎉";
+      position: absolute;
+      font-size: 60px;
+      opacity: 0.12;
+      right: 15px;
+      top: -10px;
+    }
+
+    .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #ffa9dd;
+      margin-bottom: 6px;
+    }
+
+    .name {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #e4e4ff;
+    }
+
+    .highlight {
+      color: #ffe97e;
+      font-weight: 500;
+    }
+
+    .emoji-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 22px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #9a9ab6;
+      opacity: 0.85;
+    }
+
+    .footer span {
+      white-space: nowrap;
+    }
+
+    .photo-placeholder {
+      width: 88px;
+      height: 88px;
+      border-radius: 24px;
+      background: radial-gradient(circle at 20% 0,
+                 rgba(255, 255, 255, 0.35),
+                 rgba(255, 91, 189, 0.9),
+                 rgba(15, 15, 26, 1));
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      text-align: center;
+      color: #1b1020;
+      font-weight: 600;
+      box-shadow:
+        0 0 16px rgba(255, 91, 189, 0.6),
+        0 0 40px rgba(87, 227, 255, 0.45);
+    }
+
+    @media (max-width: 540px) {
+      .frame {
+        padding: 22px 18px;
+      }
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="frame">
+    <div class="tag">
+      <div class="tag-dot"></div>
+      <span>пример внешней страницы · кринж, но с любовью</span>
+    </div>
+
+    <h1>
+      <span>С днём рождения,</span> герой собственного сериала!
+    </h1>
+    <p class="subtitle">
+      Официальное уведомление: твоя жизнь продлена ещё на один сезон.
+      Продюсер (я) доволен, рейтинги высокие, продолжение одобрено.
+    </p>
+
+    <section class="card">
+      <div class="label">главный персонаж</div>
+      <div class="name">ТЫ, конечно же</div>
+      <p class="text">
+        За этот год ты прокачал(а) навык
+        <span class="highlight">«выживать в хаосе и оставаться красивым человеком»</span>
+        минимум до уровня 80. Ты умеешь ржать, когда всё идёт не по плану,
+        поддерживать, когда другим тяжело, и превращать обычный день
+        в мем, который хочется пересказывать.
+      </p>
+
+      <div class="emoji-row">
+        <span>✨</span><span>🎂</span><span>📺</span><span>💖</span><span>🤡</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="label">официальная часть</div>
+      <p class="text">
+        Поэтому сегодня официально разрешаю тебе:
+        спать дольше, есть вкуснее, смеяться громче и
+        <span class="highlight">просить у жизни всё, что ты правда хочешь</span>.
+        Ты этого уже достоин(а) — просто по факту того, какой ты человек.
+      </p>
+      <p class="text" style="margin-top: 10px;">
+        Спасибо тебе за то, что существуешь в моей жизни.
+        Я очень рад(а), что у этого сериала есть такой персонаж, как ты.
+      </p>
+    </section>
+
+    <div class="footer">
+      <div>
+        <span>💌 Автор: твой человек, который тебя очень ценит.</span><br>
+        <span>📎 Здесь могла бы быть твоя фотография / арт / мем.</span>
+      </div>
+      <div class="photo-placeholder">
+        Фото / арт<br>друга
+      </div>
+    </div>
+  </main>
+</body>
+</html>
