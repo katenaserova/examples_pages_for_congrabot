@@ -40,7 +40,7 @@
         0 0 40px rgba(0, 0, 0, 0.8),
         0 0 60px rgba(255, 91, 189, 0.25),
         0 0 60px rgba(87, 227, 255, 0.25);
-      overflow: hidden;
+      overflow: visible; /* даём мемам торчать наружу */
     }
 
     /* Неоновые “трубки” по краям */
@@ -58,6 +58,7 @@
       opacity: 0.18;
       mix-blend-mode: screen;
       pointer-events: none;
+      z-index: -1;
     }
     .frame::after {
       filter: blur(18px);
@@ -77,6 +78,8 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
       margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
     }
 
     .tag-dot {
@@ -91,6 +94,8 @@
       font-size: clamp(26px, 5vw, 32px);
       line-height: 1.1;
       margin-bottom: 14px;
+      position: relative;
+      z-index: 2;
     }
 
     h1 span {
@@ -103,6 +108,8 @@
       font-size: 14px;
       color: #b0b0cc;
       margin-bottom: 22px;
+      position: relative;
+      z-index: 2;
     }
 
     .card {
@@ -115,6 +122,7 @@
       border: 1px solid rgba(255, 255, 255, 0.14);
       position: relative;
       overflow: hidden;
+      z-index: 2;
     }
 
     .card::before {
@@ -167,6 +175,8 @@
       font-size: 12px;
       color: #9a9ab6;
       opacity: 0.85;
+      position: relative;
+      z-index: 2;
     }
 
     .footer span {
@@ -194,6 +204,29 @@
         0 0 40px rgba(87, 227, 255, 0.45);
     }
 
+    /* мемы по краям */
+
+    .meme {
+      position: absolute;
+      width: 90px;
+      max-width: 30vw;
+      filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .m1 { top: -30px; left: -30px; transform: rotate(-10deg); }
+    .m2 { top: -40px; right: -25px; transform: rotate(8deg); }
+    .m3 { bottom: -35px; left: -10px; transform: rotate(5deg); }
+    .m4 { bottom: -40px; right: -20px; transform: rotate(-7deg); }
+
+    .m5 { top: 40%; left: -45px; transform: rotate(-4deg); }
+    .m6 { top: 48%; right: -45px; transform: rotate(6deg); }
+
+    .m7 { top: -25px; left: 35%; transform: rotate(3deg); }
+    .m8 { bottom: -25px; left: 30%; transform: rotate(-5deg); }
+    .m9 { bottom: -20px; right: 32%; transform: rotate(4deg); }
+
     @media (max-width: 540px) {
       .frame {
         padding: 22px 18px;
@@ -201,6 +234,9 @@
       .footer {
         flex-direction: column;
         align-items: flex-start;
+      }
+      .meme {
+        width: 70px;
       }
     }
   </style>
@@ -259,6 +295,17 @@
         Фото / арт<br>друга
       </div>
     </div>
+
+    <!-- мемы по краям, файлы 1.png ... 9.png в папке docs -->
+    <img src="1.png" alt="мем 1" class="meme m1">
+    <img src="2.png" alt="мем 2" class="meme m2">
+    <img src="3.png" alt="мем 3" class="meme m3">
+    <img src="4.png" alt="мем 4" class="meme m4">
+    <img src="5.png" alt="мем 5" class="meme m5">
+    <img src="6.png" alt="мем 6" class="meme m6">
+    <img src="7.png" alt="мем 7" class="meme m7">
+    <img src="8.png" alt="мем 8" class="meme m8">
+    <img src="9.png" alt="мем 9" class="meme m9">
   </main>
 </body>
 </html>
