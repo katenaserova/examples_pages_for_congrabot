@@ -1,383 +1,110 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Письмо из Хогвартса</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #050510;
-      --parchment: #f4e4c7;
-      --parchment-dark: #e0cba0;
-      --ink: #2a1b16;
-      --gold: #c49b4b;
-      --seal-red: #8c0f1f;
-    }
+<meta charset="UTF-8">
+<title>Письмо из Хогвартса</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+<style>
     body {
-      min-height: 100vh;
-      padding: 20px;
-      font-family: "Raleway", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1c2641 0, #050510 60%);
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+        margin: 0;
+        padding: 0;
+        background: #000;
+        font-family: "Cinzel", serif;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
     }
 
-    .page {
-      max-width: 1120px;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 0.9fr 1.6fr 0.9fr;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    @media (max-width: 900px) {
-      body {
-        padding: 14px;
-      }
-      .page {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .side {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      align-items: center;
-    }
-
-    .side-card {
-      width: 100%;
-      max-width: 260px;
-      border-radius: 14px;
-      border: 2px solid rgba(196,155,75,0.8);
-      background: radial-gradient(circle at top, rgba(255,255,255,0.18), transparent 60%), #0b0b13;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.9);
-      overflow: hidden;
-    }
-
-    .side-card-inner {
-      padding: 4px;
-    }
-
-    .side-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      border-radius: 10px;
-    }
-
-    .img-placeholder {
-      width: 100%;
-      height: 150px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 10px;
-      font-size: 13px;
-      color: #f4e4c7;
-      background: radial-gradient(circle at top, #433023 0, #130b08 70%);
-    }
-
-    /* Письмо */
-
-    .frame {
-      position: relative;
-      border-radius: 22px;
-      padding: 26px 26px 46px;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.5), transparent 60%),
-        linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 100%);
-      box-shadow:
-        0 0 40px rgba(0,0,0,0.85),
-        0 0 80px rgba(0,0,0,0.95);
-      overflow: hidden;
-    }
-
-    .frame::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.25), transparent 55%),
-        radial-gradient(circle at 80% 80%, rgba(0,0,0,0.06), transparent 60%);
-      mix-blend-mode: multiply;
-      opacity: 0.9;
-      pointer-events: none;
-    }
-
-    .letter-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .crest-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .crest-logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #111;
-      border: 2px solid rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #f4e4c7;
-      font-family: "Cinzel", serif;
-      font-size: 22px;
-    }
-
-    .crest-text {
-      font-family: "Cinzel", serif;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #5c4230;
-    }
-
-    .crest-text span {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 0.24em;
-      color: #8a6a47;
+    .letter {
+        width: 100%;
+        max-width: 800px;
+        min-height: 1000px;
+        background-image: url("letter-bg.jpg");
+        background-size: cover;
+        background-position: center top;
+        padding: 160px 70px 120px;
+        box-sizing: border-box;
+        position: relative;
+        font-family: "Cormorant Garamond", serif;
+        color: #2b1a12;
+        font-size: 20px;
+        line-height: 1.6;
     }
 
     h1 {
-      font-family: "Cinzel", serif;
-      font-size: clamp(22px, 4.3vw, 26px);
-      margin-bottom: 6px;
-      color: #3c2414;
+        font-family: "Cinzel", serif;
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #2b1a12;
     }
 
-    h1 span {
-      color: #8b5a2b;
+    .photo-slot {
+        width: 160px;
+        height: 200px;
+        border: 2px solid #3b2618;
+        margin-bottom: 15px;
+        background: rgba(255,255,255,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-family: sans-serif;
     }
 
-    .subtitle {
-      font-size: 13px;
-      color: #6b4a33;
-      margin-bottom: 14px;
+    .seal {
+        width: 140px;
+        height: 140px;
+        background: radial-gradient(circle at 30% 30%, #d05959, #7a0d0d);
+        border-radius: 50%;
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #f9d7c6;
+        font-family: "Cinzel", serif;
+        font-size: 24px;
+        border: 4px solid #4a0a0a;
+        box-shadow: 0 0 20px rgba(0,0,0,0.6);
     }
-
-    .person-row {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-bottom: 10px;
-    }
-
-    @media (max-width: 900px) {
-      .person-row {
-        align-items: flex-start;
-      }
-    }
-
-    .person-photo {
-      width: 90px;
-      height: 110px;
-      border-radius: 10px;
-      border: 2px solid rgba(60,36,20,0.9);
-      background: #111;
-      box-shadow:
-        0 4px 10px rgba(0,0,0,0.6),
-        0 0 0 1px rgba(255,255,255,0.15);
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .person-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .person-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: #f0dcc0;
-      text-align: center;
-      padding: 8px;
-      background: radial-gradient(circle at top, #3c2414 0, #140b06 70%);
-    }
-
-    .letter-body {
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .letter-body p + p {
-      margin-top: 8px;
-    }
-
-    .signature {
-      margin-top: 12px;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .signature strong {
-      font-family: "Cinzel", serif;
-      font-weight: 600;
-    }
-
-    /* Печать Хогвартса */
-
-    .wax-seal {
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #ffd9dd, var(--seal-red));
-      box-shadow:
-        0 0 0 5px rgba(60, 5, 10, 0.85),
-        0 10px 20px rgba(0, 0, 0, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #f7e1c6;
-      font-family: "Cinzel", serif;
-      font-size: 18px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      text-align: center;
-    }
-
-    .wax-seal span {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 0.22em;
-    }
-
-    @media (max-width: 900px) {
-      .frame {
-        padding: 22px 18px 40px;
-      }
-      .wax-seal {
-        width: 90px;
-        height: 90px;
-        bottom: -24px;
-        font-size: 15px;
-      }
-      .wax-seal span {
-        font-size: 9px;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <div class="page">
-    <!-- ЛЕВАЯ КОЛОНКА: Хогвартс и торт -->
-    <aside class="side">
-      <div class="side-card">
-        <div class="side-card-inner">
-          <!-- ЗАМЕНИ ЭТО НА <img src="hogwarts.jpg" alt="Хогвартс"> -->
-          <div class="img-placeholder">Здесь будет фото Хогвартса</div>
-        </div>
-      </div>
 
-      <div class="side-card">
-        <div class="side-card-inner">
-          <!-- ЗАМЕНИ ЭТО НА <img src="hp-cake.jpg" alt="Торт Гарри Поттера"> -->
-          <div class="img-placeholder">Здесь будет торт<br>в стиле Гарри Поттера</div>
-        </div>
-      </div>
-    </aside>
+<div class="letter">
 
-    <!-- ЦЕНТР: ПИСЬМО -->
-    <main class="frame">
-      <div class="letter-inner">
-        <div class="crest-row">
-          <div class="crest-logo">H</div>
-          <div class="crest-text">
-            школа чародейства и волшебства
-            <span>хогвартс</span>
-          </div>
-        </div>
+    <h1>Дорогая Матильда,</h1>
 
-        <h1>Дорогой(ая) <span>Матильда</span>,</h1>
-        <p class="subtitle">
-          по личному распоряжению профессоров тебе направляется это
-          официальное (и немного хаотично-волшебное) поздравление.
-        </p>
+    <p>
+        Министерство Магии извещает: ещё один год твоего существования официально признан успешным,
+        полным чудес, и, по словам профессора МакГонагалл, «подозрительно похожим на проказу учеников Гриффиндора».
+    </p>
 
-        <div class="person-row">
-          <div class="person-photo">
-            <!-- ЗАМЕНИ ЭТО НА <img src="birthday-person.jpg" alt="Фото именинника"> -->
-            <div class="person-placeholder">Фото<br>именинника</div>
-          </div>
-          <div class="letter-body">
-            <p>
-              С Мерлиновой бородой, ты прошёл(а) ещё один год так, будто
-              это учебный год в Хогвартсе: немного хаоса, куча магии и
-              пара-тройка историй, о которых Минерве лучше не знать.
-            </p>
-          </div>
-        </div>
+    <p>
+        Да хранят тебя Мерлинова борода, удача, и способность появляться там, где нужен смех и немного волшебства.
+        Пусть каждый день будет как маленькое приключение — без дементоров, но с хорошим чаем.
+    </p>
 
-        <div class="letter-body">
-          <p>
-            Пусть в твоей жизни будет меньше дементоров и больше людей,
-            рядом с которыми патронус вылетает сам собой. Пусть каждое
-            желание ловит заклинание <strong>«экспекто исполнюс»</strong>, а
-            случайные чудеса случаются чаще, чем опоздания на Хогвартс-Экспресс.
-          </p>
+    <br>
 
-          <p>
-            И если вдруг станет темно, помни: где-то рядом есть человек,
-            который всегда готов шепнуть за тебя заклинание против
-            тёмных мыслей и принести чай, даже без помощи домовых эльфов.
-          </p>
-        </div>
+    <div class="photo-slot">
+        Фото именинника
+    </div>
 
-        <div class="signature">
-          С самыми тёплыми пожеланиями,<br>
-          <strong>твой тайный маг-отправитель</strong><br>
-          (совершенно искренне рад, что ты есть в его не-маггловской жизни).
-        </div>
-      </div>
+    <p>
+        С самыми тёплыми пожеланиями,<br>
+        Твой тайный маг-отправитель
+    </p>
 
-      <div class="wax-seal">
+    <div class="seal">
         H
-        <span>hogwarts</span>
-      </div>
-    </main>
+    </div>
 
-    <!-- ПРАВАЯ КОЛОНКА: ГАРРИ С СОВОЙ -->
-    <aside class="side">
-      <div class="side-card">
-        <div class="side-card-inner">
-          <!-- ЗАМЕНИ ЭТО НА <img src="harry-owl.jpg" alt="Гарри и сова"> -->
-          <div class="img-placeholder">Здесь будет Гарри<br>с совой</div>
-        </div>
-      </div>
-    </aside>
-  </div>
+</div>
+
 </body>
 </html>
