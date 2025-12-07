@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Письмо из Хогвартса</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Немного "магический" шрифт -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -25,21 +24,83 @@
       min-height: 100vh;
       padding: 20px;
       font-family: "Raleway", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #1b2540 0, #050510 55%);
       color: var(--ink);
       display: flex;
       align-items: center;
       justify-content: center;
-      background:
-        radial-gradient(circle at top, #1b2540 0, #050510 55%) fixed,
-        url("stars-texture.jpg") center/cover fixed; /* опциональный фон со звёздами */
     }
+
+    .page {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 0.9fr 1.6fr 0.9fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 14px;
+      }
+      .page {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .side {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .side-card {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 14px;
+      border: 2px solid rgba(210,178,107,0.7);
+      background: radial-gradient(circle at top, rgba(255,255,255,0.2), transparent 65%),
+                  #0b0b12;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.8);
+      overflow: hidden;
+    }
+
+    .side-card-inner {
+      padding: 4px;
+    }
+
+    .side-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .img-placeholder {
+      width: 100%;
+      height: 140px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f4e4c7;
+      font-size: 13px;
+      text-align: center;
+      padding: 10px;
+      background:
+        radial-gradient(circle at top, #433023 0, #130b08 70%);
+    }
+
+    /* письмо */
 
     .frame {
       position: relative;
-      max-width: 780px;
-      width: 100%;
       border-radius: 22px;
-      padding: 26px 26px 30px;
+      padding: 24px 26px 40px;
       background:
         radial-gradient(circle at top, rgba(255,255,255,0.4), transparent 60%),
         linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 100%);
@@ -50,66 +111,46 @@
     }
 
     .frame::before {
-      /* лёгкая текстура бумаги */
       content: "";
       position: absolute;
       inset: 0;
       background-image:
         radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 55%),
-        radial-gradient(circle at 80% 80%, rgba(0,0,0,0.08), transparent 60%);
+        radial-gradient(circle at 80% 80%, rgba(0,0,0,0.06), transparent 60%);
       mix-blend-mode: multiply;
       opacity: 0.9;
       pointer-events: none;
     }
 
-    .inner {
+    .letter-inner {
       position: relative;
       z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-      gap: 20px;
     }
 
-    @media (max-width: 640px) {
-      body {
-        padding: 14px;
-      }
-      .frame {
-        padding: 20px 18px 24px;
-      }
-      .inner {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .crest {
+    .crest-row {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
+      gap: 12px;
+      margin-bottom: 16px;
     }
 
     .crest-logo {
-      width: 64px;
-      height: 64px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       background: #111;
-      border: 2px solid rgba(0,0,0,0.3);
-      overflow: hidden;
+      border: 2px solid rgba(0,0,0,0.5);
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .crest-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      color: #f4e4c7;
+      font-family: "Cinzel", serif;
+      font-size: 22px;
     }
 
     .crest-text {
       font-family: "Cinzel", serif;
-      font-size: 13px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: #5c4230;
@@ -117,22 +158,26 @@
 
     .crest-text span {
       display: block;
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 0.22em;
       color: #8a6a47;
     }
 
     h1 {
       font-family: "Cinzel", serif;
-      font-size: clamp(22px, 4.4vw, 28px);
-      margin-bottom: 10px;
+      font-size: clamp(22px, 4.2vw, 26px);
+      margin-bottom: 8px;
       color: #3c2414;
+    }
+
+    h1 span {
+      color: #8b5a2b;
     }
 
     .subtitle {
       font-size: 13px;
       color: #6b4a33;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .letter-body {
@@ -141,11 +186,51 @@
     }
 
     .letter-body p + p {
-      margin-top: 10px;
+      margin-top: 8px;
+    }
+
+    .person-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .person-photo {
+      width: 90px;
+      height: 110px;
+      border-radius: 10px;
+      border: 2px solid rgba(60,36,20,0.9);
+      background: #111;
+      box-shadow:
+        0 4px 10px rgba(0,0,0,0.6),
+        0 0 0 1px rgba(255,255,255,0.15);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .person-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .person-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #f0dcc0;
+      text-align: center;
+      padding: 8px;
+      background: radial-gradient(circle at top, #3c2414 0, #140b06 70%);
     }
 
     .signature {
-      margin-top: 18px;
+      margin-top: 12px;
       font-size: 13px;
       line-height: 1.6;
     }
@@ -155,196 +240,142 @@
       font-weight: 600;
     }
 
+    /* красная печать Хогвартса */
+
     .wax-seal {
       position: absolute;
       bottom: -32px;
       left: 50%;
       transform: translateX(-50%);
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #ffdde0, #9c1f2f);
+      background: radial-gradient(circle at 30% 20%, #ffdde0, #8c0f1f);
       box-shadow:
-        0 0 0 6px rgba(80, 6, 15, 0.6),
-        0 10px 18px rgba(0, 0, 0, 0.7);
+        0 0 0 5px rgba(60, 5, 10, 0.8),
+        0 10px 18px rgba(0, 0, 0, 0.8);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #f7e1c6;
       font-family: "Cinzel", serif;
       font-size: 18px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      text-align: center;
     }
 
-    @media (max-width: 640px) {
+    .wax-seal span {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+    }
+
+    @media (max-width: 900px) {
+      .frame {
+        padding: 20px 18px 34px;
+      }
       .wax-seal {
         width: 90px;
         height: 90px;
         bottom: -26px;
         font-size: 14px;
       }
-    }
-
-    /* Правая колонка: фото и декор */
-
-    .side {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .photo-frame {
-      width: 180px;
-      height: 230px;
-      border-radius: 12px;
-      border: 3px solid rgba(60, 36, 20, 0.9);
-      background: #111;
-      overflow: hidden;
-      box-shadow:
-        0 6px 14px rgba(0, 0, 0, 0.7),
-        0 0 0 1px rgba(255,255,255,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #f0dcc0;
-      font-size: 13px;
-      text-align: center;
-      padding: 10px;
-    }
-
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .photo-caption {
-      font-size: 12px;
-      color: #6b4a33;
-      text-align: center;
-    }
-
-    .owl-note {
-      margin-top: 6px;
-      font-size: 11px;
-      color: #866345;
-      text-align: center;
-    }
-
-    .hogwarts-silhouette {
-      width: 200px;
-      max-width: 100%;
-      opacity: 0.9;
-      mix-blend-mode: multiply;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-    }
-
-    .hogwarts-silhouette img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      .wax-seal span {
+        font-size: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="frame">
-    <div class="inner">
-      <!-- Левая часть: письмо -->
-      <section>
-        <header class="crest">
+  <div class="page">
+    <!-- ЛЕВАЯ КОЛОНКА: Хогвартс и торт -->
+    <aside class="side">
+      <div class="side-card">
+        <div class="side-card-inner">
+          <!-- Замените div на <img src="hogwarts.jpg" alt="Хогвартс"> -->
+          <div class="img-placeholder">Здесь будет фото Хогвартса</div>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-card-inner">
+          <!-- Замените div на <img src="hp-cake.jpg" alt="Торт Гарри Поттера"> -->
+          <div class="img-placeholder">Здесь будет торт Гарри Поттера</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ЦЕНТР: Письмо -->
+    <main class="frame">
+      <div class="letter-inner">
+        <div class="crest-row">
           <div class="crest-logo">
-            <!-- сюда можно добавить герб/силуэт Хогвартса -->
-            <!-- <img src="hogwarts-crest.png" alt="Hogwarts crest"> -->
-            <span style="font-family:'Cinzel',serif;font-size:18px;color:#f4e4c7;">H</span>
+            H
           </div>
           <div class="crest-text">
-            Школа чародейства и волшебства
+            школа чародейства и волшебства
             <span>хогвартс</span>
           </div>
-        </header>
+        </div>
 
-        <h1>Дорогой(ая) <span style="color:#8b5a2b;">Матильда</span>,</h1>
+        <h1>Дорогой(ая) <span>Матильда</span>,</h1>
         <p class="subtitle">
-          по распоряжению директора Хогвартса и по личной инициативе немного
-          взволнованных деканов, тебе направляется это официальное (и слегка
-          волшебное) поздравление.
+          по личному распоряжению профессора Макгонагалл тебе срочно
+          доставлено это волшебное поздравление.
         </p>
+
+        <div class="person-row">
+          <div class="person-photo">
+            <!-- Замените div на <img src="birthday-person.jpg" alt="Фото именинника"> -->
+            <div class="person-placeholder">Фото<br>именинника</div>
+          </div>
+          <div class="letter-body">
+            <p>
+              С Мерлиновой бородой, ты прошёл(а) ещё один круг вокруг солнца —
+              и сделал(а) это так, будто у тебя в расписании не жизнь, а
+              постоянный урок «Полёты на метле и мемы 101».
+            </p>
+          </div>
+        </div>
 
         <div class="letter-body">
           <p>
-            С Мерлиновой бородой, ещё один год позади — и ты всё так же
-            умудряешься сочетать в себе храбрость Гриффиндора,
-            хитрость Слизерина, мудрость Когтеврана и доброту Пуффендуя.
-            Не каждый маг может похвастаться таким набором, даже после
-            пары-тройки неудачных зелий на уроках зельеварения.
+            Пусть в твоём году будет меньше дементоров и больше людей,
+            рядом с которыми патронус появляется сам по себе. Пусть
+            каждое желание ловит заклинание <strong>«экспекто исполнюс»</strong>,
+            а случайные чудеса происходят чаще, чем сова с письмом в 11 лет.
           </p>
 
           <p>
-            В этот день Министерство магии официально разрешает тебе:
-            смеяться так громко, будто ты только что выиграл(а) Кубок
-            по квиддичу, загадывать желания, от которых дрогнет даже
-            Хогвартс-Экспресс, и принимать любовь и внимание в
-            промышленных, а не мизерных дозах.
-          </p>
-
-          <p>
-            Пусть в твоей жизни будет меньше дементоров и больше людей,
-            рядом с которыми не нужен патронус, потому что и так тепло.
-            Пусть все «запретные леса» превращаются в уютные прогулки,
-            а любые тёмные метки остаются только на учебных иллюстрациях
-            по защите от тёмных искусств.
-          </p>
-
-          <p>
-            Если вдруг станет грустно — вспоминай, что где-то в совятне
-            Хогвартса всегда найдётся ещё одно письмо для тебя, а где-то
-            в этом мире есть человек, который очень рад, что ты существуешь
-            (и да, это я 👀).
+            Если станет грустно — вспоминай: где-то в этом мире есть человек,
+            который всегда готов крикнуть за тебя «Экспеллиармус» всем
+            тёмным мыслям. И да, это я.
           </p>
         </div>
 
         <div class="signature">
           С самыми тёплыми пожеланиями,<br>
-          <strong>твой личный маг-отправитель</strong><br>
-          (который, если что, всегда готов прислать ещё одну сову
-          с поддержкой и мемами).
+          <strong>твой тайный маг-отправитель</strong><br>
+          (который очень рад, что ты есть не только в Хогвартсе, но и в его жизни).
         </div>
-      </section>
+      </div>
 
-      <!-- Правая часть: фото и декор -->
-      <aside class="side">
-        <div class="photo-frame">
-          <!-- сюда подставишь фото именинника -->
-          <!-- <img src="birthday-person.jpg" alt="Фото именинника"> -->
-          Здесь будет фото<br>именинника / именинницы
+      <div class="wax-seal">
+        H
+        <span>hogwarts</span>
+      </div>
+    </main>
+
+    <!-- ПРАВАЯ КОЛОНКА: Гарри с совой -->
+    <aside class="side">
+      <div class="side-card">
+        <div class="side-card-inner">
+          <!-- Замените div на <img src="harry-owl.jpg" alt="Гарри и сова"> -->
+          <div class="img-placeholder">Здесь будет Гарри с совой</div>
         </div>
-        <div class="photo-caption">
-          Для истории факультета<br>
-          и личного архива профессора Дамблдора.
-        </div>
-
-        <div class="hogwarts-silhouette">
-          <!-- сюда картинку Хогвартса / ночного замка -->
-          <!-- <img src="hogwarts-night.jpg" alt="Hogwarts at night"> -->
-        </div>
-
-        <p class="owl-note">
-          P.S. Если до адресата это письмо дошло не совой,
-          а через обычный интернет — не волнуйся, магия всё равно засчитана.
-        </p>
-      </aside>
-    </div>
-
-    <div class="wax-seal">
-      HP
-    </div>
-  </main>
+      </div>
+    </aside>
+  </div>
 </body>
 </html>
-
