@@ -221,17 +221,26 @@
     .m9 { bottom: 8%; right: -180px; transform: rotate(4deg); }
 
     @media (max-width: 540px) {
-      /* на мобиле убираем flex-центрирование и делаем обычный поток */
+      /* Убираем старые стили и делаем контейнер для всей страницы */
       body {
-        display: block;
-        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+        position: relative;
+        overflow-x: hidden;
       }
 
-      /* рамка поменьше и по центру */
+      /* рамка по центру с отступами для мемов */
       .frame {
         max-width: 360px;
+        width: 100%;
         padding: 18px 14px 22px;
-        margin: 0 auto;
+        margin: 0;
+        position: relative;
+        z-index: 10;
       }
 
       .footer {
@@ -240,26 +249,59 @@
         gap: 4px;
       }
 
-      /* мемы на телефоне меньше */
+      /* Мемы на мобилке - уменьшаем */
       .meme {
-        width: 80px;
+        width: 90px;
+        z-index: 1;
       }
 
-      /* ТРИ СВЕРХУ: слева, по центру, справа */
-      .m1 { top: -80px; left: -25px;  transform: rotate(-8deg); }
-      .m2 { top: -85px; left: 50%;    transform: translateX(-50%) rotate(5deg); }
-      .m3 { top: -80px; right: -25px; transform: rotate(6deg); }
+      /* ВЕРХНИЙ РЯД: равномерно над рамкой */
+      .m1 { 
+        top: 0; 
+        left: 5%; 
+        transform: rotate(-10deg); 
+      }
+      .m2 { 
+        top: 0; 
+        left: 50%; 
+        transform: translateX(-50%) rotate(5deg); 
+      }
+      .m3 { 
+        top: 0; 
+        right: 5%; 
+        transform: rotate(8deg); 
+      }
 
-      /* ДВА ПО БОКАМ ПО СЕРЕДИНЕ */
-      .m4 { top: 35%; left: -70px;  transform: rotate(-4deg); }
-      .m5 { top: 40%; right: -70px; transform: rotate(3deg); }
+      /* СРЕДНИЙ РЯД: по бокам от рамки */
+      .m4 { 
+        top: 40%; 
+        left: -35px; 
+        transform: rotate(-6deg); 
+      }
+      .m5 { 
+        top: 45%; 
+        right: -35px; 
+        transform: rotate(6deg); 
+      }
 
-      /* ТРИ СНИЗУ: слева, центр, справа */
-      .m6 { bottom: -80px; left: -25px;  transform: rotate(-5deg); }
-      .m7 { bottom: -85px; left: 50%;    transform: translateX(-50%) rotate(4deg); }
-      .m8 { bottom: -80px; right: -25px; transform: rotate(-3deg); }
+      /* НИЖНИЙ РЯД: равномерно под рамкой */
+      .m6 { 
+        bottom: 0; 
+        left: 10%; 
+        transform: rotate(-5deg); 
+      }
+      .m7 { 
+        bottom: 0; 
+        left: 50%; 
+        transform: translateX(-50%) rotate(3deg); 
+      }
+      .m8 { 
+        bottom: 0; 
+        right: 10%; 
+        transform: rotate(-8deg); 
+      }
 
-      /* если вдруг где-то используешь m9 — скрываем на мобилке */
+      /* m9 - скрываем, так как у нас только 8 мемов */
       .m9 {
         display: none;
       }
