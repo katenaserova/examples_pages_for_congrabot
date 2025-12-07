@@ -220,41 +220,51 @@
     .m7 { top: 50%; right: -200px; transform: rotate(-3deg); }
     .m9 { bottom: 8%; right: -180px; transform: rotate(4deg); }
 
-        @media (max-width: 540px) {
+    @media (max-width: 540px) {
+      /* на мобиле убираем flex-центрирование и делаем обычный поток */
       body {
-          padding: 14px; /* Равномерный отступ по периметру */
+        display: block;
+        padding: 16px;
       }
 
+      /* рамка поменьше и по центру */
       .frame {
-          padding: 22px 18px 26px; /* Немного увеличила внутренние отступы */
-          margin-left: auto;
-          margin-right: auto;
+        max-width: 360px;
+        padding: 18px 14px 22px;
+        margin: 0 auto;
       }
 
       .footer {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 4px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
       }
 
+      /* мемы на телефоне меньше */
       .meme {
-          width: 110px;
+        width: 80px;
       }
 
-      .m1 { top: -110px; left: -10px; transform: rotate(-5deg); }
-      .m2 { top: -110px; right: -10px; transform: rotate(4deg); }
+      /* ТРИ СВЕРХУ: слева, по центру, справа */
+      .m1 { top: -80px; left: -25px;  transform: rotate(-8deg); }
+      .m2 { top: -85px; left: 50%;    transform: translateX(-50%) rotate(5deg); }
+      .m3 { top: -80px; right: -25px; transform: rotate(6deg); }
 
-      .m3 { top: 40%; left: -50px; transform: rotate(-4deg); }
-      .m4 { top: 40%; right: -50px; transform: rotate(3deg); }
+      /* ДВА ПО БОКАМ ПО СЕРЕДИНЕ */
+      .m4 { top: 35%; left: -70px;  transform: rotate(-4deg); }
+      .m5 { top: 40%; right: -70px; transform: rotate(3deg); }
 
-      .m5 { bottom: -90px; left: -10px; transform: rotate(-3deg); }
-      .m6 { bottom: -90px; right: -10px; transform: rotate(5deg); }
+      /* ТРИ СНИЗУ: слева, центр, справа */
+      .m6 { bottom: -80px; left: -25px;  transform: rotate(-5deg); }
+      .m7 { bottom: -85px; left: 50%;    transform: translateX(-50%) rotate(4deg); }
+      .m8 { bottom: -80px; right: -25px; transform: rotate(-3deg); }
 
-      /* скрываем лишние мемы */
-      .m7, .m8, .m9 {
-          display: none;
+      /* если вдруг где-то используешь m9 — скрываем на мобилке */
+      .m9 {
+        display: none;
       }
-}
+    }
+
 
   </style>
 </head>
