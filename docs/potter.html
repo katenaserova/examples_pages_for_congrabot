@@ -7,12 +7,11 @@
 
 <style>
 
-/* ----------  Подключение шрифтов ---------- */
+/* ----------  Подключение шрифта ---------- */
 @font-face {
     font-family: "ParryHotter";
     src: url("ParryHotter.ttf") format("truetype");
 }
-
 
 /* ----------  Общий фон ---------- */
 body {
@@ -55,11 +54,11 @@ body {
     background-size: cover;
     background-position: center top;
 
-    padding: 220px 70px 150px;   /* большой верхний отступ чтобы герб был виден */
+    padding: 220px 70px 150px; 
     box-sizing: border-box;
 
     color: #2b1a12;
-    font-family: "ParryHotter.ttf", serif;
+    font-family: "ParryHotter", serif;
     font-size: 22px;
     line-height: 1.7;
     position: relative;
@@ -84,6 +83,8 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    /* Важно: НЕ используем ParryHotter здесь, иначе текст будет нечитаем */
     font-size: 15px;
     font-family: sans-serif;
 }
@@ -105,7 +106,7 @@ h1 {
     justify-content: center;
 
     font-family: "ParryHotter", serif;
-    font-size: 36px;
+    font-size: 44px;
     color: #f5d4c4;
 
     box-shadow: 0 0 25px rgba(0,0,0,0.6);
@@ -120,13 +121,12 @@ h1 {
     }
 
     .side-images {
-        display: none; /* скрываем боковые фото */
+        display: none;
     }
 
     .letter {
         padding: 200px 30px 160px;
         font-size: 19px;
-        background-position: center top;
     }
 
     h1 {
@@ -136,7 +136,7 @@ h1 {
     .seal {
         width: 120px;
         height: 120px;
-        font-size: 28px;
+        font-size: 32px;
     }
 }
 
@@ -147,13 +147,11 @@ h1 {
 
 <div class="page">
 
-    <!-- ЛЕВАЯ КОЛОНКА ДЛЯ ФОТО (ДЕСКТОП) -->
     <div class="side-images">
         <img src="hogwarts-photo.jpg" alt="">
         <img src="harry-owl.jpg" alt="">
     </div>
 
-    <!-- ОСНОВНОЕ ПИСЬМО -->
     <div class="letter">
 
         <h1>Дорогая Матильда,</h1>
@@ -181,7 +179,6 @@ h1 {
 
     </div>
 
-    <!-- ПРАВАЯ КОЛОНКА ДЛЯ ФОТО (ДЕСКТОП) -->
     <div class="side-images">
         <img src="cake.jpg" alt="">
     </div>
