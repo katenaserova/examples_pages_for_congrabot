@@ -217,7 +217,7 @@
     .m7 { top: 50%; right: -200px; transform: rotate(-3deg); }
     .m9 { bottom: 8%; right: -180px; transform: rotate(4deg); }
 
-    @media (max-width: 540px) {
+        @media (max-width: 540px) {
       .frame {
         padding: 20px 16px 24px;
       }
@@ -227,22 +227,24 @@
         align-items: flex-start;
       }
 
+      /* на телефоне делаем мемы поменьше */
       .meme {
-        width: 110px;
+        width: 95px;
       }
 
-      /* мобильная раскладка:
-         6 мемов вокруг, 3 скрываем, чтобы не было каши */
+      /* ВЕРХНИЕ — по углам, не закрывают заголовок */
+      .m1 { top: -80px; left: -30px;  transform: rotate(-5deg); }
+      .m2 { top: -80px; right: -30px; transform: rotate(4deg); }
 
-      .m1 { top: -110px; left: -10px; transform: rotate(-5deg); }
-      .m2 { top: -110px; right: -10px; transform: rotate(4deg); }
+      /* СЕРЕДИНА — по бокам, отодвинуты от текста */
+      .m3 { top: 40%; left: -70px;  transform: rotate(-4deg); }
+      .m4 { top: 55%; right: -70px; transform: rotate(3deg); }
 
-      .m3 { top: 30%; left: -50px; transform: rotate(-4deg); }
-      .m4 { top: 35%; right: -50px; transform: rotate(3deg); }
+      /* НИЗ — по углам, чуть ниже рамки */
+      .m5 { bottom: -70px; left: -25px;  transform: rotate(-3deg); }
+      .m6 { bottom: -70px; right: -25px; transform: rotate(5deg); }
 
-      .m5 { bottom: -90px; left: -10px; transform: rotate(-3deg); }
-      .m6 { bottom: -90px; right: -10px; transform: rotate(5deg); }
-
+      /* лишние мемы скрываем на мобилке, чтобы не было каши */
       .m7,
       .m8,
       .m9 {
