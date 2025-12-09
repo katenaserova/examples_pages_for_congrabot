@@ -33,13 +33,15 @@ body {
 /* ---------- Письмо ---------- */
 .letter {
     width: 100%;
-    min-height: 1000px;
+    /* min-height можно убрать или сделать поменьше */
+    min-height: 0;
 
     background-image: url("letter.png");
-    background-size: cover;
+    background-size: contain;      /* было cover */
+    background-repeat: no-repeat;  /* чтобы не тайлилась */
     background-position: center top;
 
-    padding: 200px 70px 150px;  
+    padding: 200px 70px 150px;
     box-sizing: border-box;
 
     color: #2b1a12;
