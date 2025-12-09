@@ -33,15 +33,16 @@ body {
 /* ---------- Письмо ---------- */
 .letter {
     width: 100%;
-    /* min-height можно убрать или сделать поменьше */
+    /* мин. высоту можно не жестко задавать */
     min-height: 0;
 
     background-image: url("letter.png");
-    background-size: contain;      /* было cover */
-    background-repeat: no-repeat;  /* чтобы не тайлилась */
+    background-size: contain;      /* показываем всю картинку */
+    background-repeat: no-repeat;
     background-position: center top;
 
-    padding: 200px 70px 150px;
+    /* проценты: top / right / bottom / left */
+    padding: 23% 10% 18% 10%;
     box-sizing: border-box;
 
     color: #2b1a12;
@@ -61,8 +62,8 @@ h1 {
 
 /* ---------- Фото именинника ---------- */
 .photo-slot {
-    width: 180px;
-    height: 230px;
+    width: 150px;
+    height: 150px;                 /* квадратная */
     border: 2px solid #3b2618;
     margin-top: 25px;
     margin-bottom: 20px;
@@ -71,20 +72,24 @@ h1 {
     align-items: center;
     justify-content: center;
 
-    font-size: 15px;
+    font-size: 14px;
     font-family: sans-serif;
 }
-
 
 
 /* ---------- Мобильная версия ---------- */
 @media (max-width: 900px) {
 
     .letter {
-        padding: 305px 30px 160px; /* ← увеличенный верхний отступ */
+        /* чуть больше отступ сверху под герб на узких экранах */
+        padding: 28% 8% 20% 8%;
         font-size: 20px;
-        background-position: center top;
     }
+
+    h1 {
+        font-size: 32px;
+    }
+}
 
     h1 {
         font-size: 32px;
