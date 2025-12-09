@@ -30,19 +30,18 @@ body {
     box-sizing: border-box;
 }
 
-/* ---------- Письмо ---------- */
+/* ---------- Письмо (деcктоп по умолчанию) ---------- */
 .letter {
     width: 100%;
-    /* мин. высоту можно не жестко задавать */
     min-height: 0;
 
     background-image: url("letter.png");
-    background-size: contain;      /* показываем всю картинку */
+    background-size: contain;      /* вся картинка видна */
     background-repeat: no-repeat;
     background-position: center top;
 
-    /* проценты: top / right / bottom / left */
-    padding: 23% 10% 18% 10%;
+    /* top  right bottom left – подогнано под фон на компе */
+    padding: 23% 12% 18% 12%;
     box-sizing: border-box;
 
     color: #2b1a12;
@@ -63,7 +62,7 @@ h1 {
 /* ---------- Фото именинника ---------- */
 .photo-slot {
     width: 150px;
-    height: 150px;                 /* квадратная */
+    height: 150px;     /* квадратная */
     border: 2px solid #3b2618;
     margin-top: 25px;
     margin-bottom: 20px;
@@ -76,24 +75,38 @@ h1 {
     font-family: sans-serif;
 }
 
-
 /* ---------- Мобильная версия ---------- */
 @media (max-width: 600px) {
 
+    .page {
+        padding: 10px;          /* меньше внешних полей */
+    }
+
     .letter {
-        padding: 26% 8% 20% 8%;          /* чуть ниже от герба и выше от печати */
+        background-size: cover;              /* фон растягиваем, чтобы смотрелся плотнее */
+        background-position: center top;
+
+        padding: 30% 8% 26% 8%;             /* отступы под герб и печать на телефоне */
         font-size: 18px;
         line-height: 1.5;
     }
 
     h1 {
         font-size: 26px;
+        margin-bottom: 16px;
     }
 
-
-
+    .photo-slot {
+        width: 120px;
+        height: 120px;
+        margin-top: 18px;
+        margin-bottom: 18px;
+        font-size: 12px;
+    }
+}
 
 </style>
+
 </head>
 
 <body>
